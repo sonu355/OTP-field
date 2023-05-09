@@ -8,12 +8,12 @@ const PhoneVerificationPopup = () => {
     function handleOtpChange(event, index) {
         const value = event.target.value;
         const newOtpValues = [...otpValues];
-        newOtpValues[index] = value.replace(/\D/, '').slice(0, 1); // only allow digits and restrict to single char
+        newOtpValues[index] = value.replace(/\D/, '').slice(0, 1); 
         setOtpValues(newOtpValues);
 
-        if (value === "" && index > 0) { // handle backspace
+        if (value === "" && index > 0) {
             document.getElementById(`otp-${index - 1}`).focus();
-        } else if (value !== "" && index < otpValues.length - 1) { // handle forward focus
+        } else if (value !== "" && index < otpValues.length - 1) { 
             document.getElementById(`otp-${index + 1}`).focus();
         }
         setIsOtpValid(true)
@@ -26,7 +26,7 @@ const PhoneVerificationPopup = () => {
 
         for (let i = 0; i < pasteData.length && i < newOtpValues.length; i++) {
             const char = pasteData.charAt(i);
-            if (/\d/.test(char)) { // only allow digits
+            if (/\d/.test(char)) {
                 newOtpValues[i] = char;
             }
         }
@@ -37,10 +37,10 @@ const PhoneVerificationPopup = () => {
                 document.getElementById(`otp-${emptyIndex}`).focus();
             }
     }
-    
+
     function handleVerify() {
         const isInvalid = otpValues.some(value => value === "");
-        setIsOtpValid(!isInvalid); // show warning if any input is empty
+        setIsOtpValid(!isInvalid); 
         if (!isInvalid) {
             console.log("OTP is valid and verified!");
         }
@@ -81,8 +81,8 @@ const PhoneVerificationPopup = () => {
                 ))}
             </div>
             <div style={{color:"blue", display: "flex", justifyContent: "space-between", width: "100%", marginTop: "1rem" }}>
-                <div>Change Number</div>
-                <div>Re-send OTP</div>
+                <div style={{marginLeft:"180px"}}>Change Number</div>
+                <div style={{marginRight:"180px"}}>Re-send OTP</div>
             </div>
 
             {isOtpValid && <p style={{ color: "red" }}></p>}

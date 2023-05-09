@@ -4,10 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    // <Otp />
-    // <Button />
-  //  < PhoneVerification />
-  <Otpgenerator />
+    <Otpgenerator />
   );
 }
 
